@@ -1,16 +1,16 @@
 # Acoustic synchronization utilities for Frontier Labs recorders
 
-If you're using Frontier Labs recorders for acoustic localization, these tools can help you synchronize your recorders. 
+If you're using Frontier Labs recorders for acoustic localization, these tools can help you synchronize your recordings.
 
 ## About
-Frontier Labs recorders with the localization firmware can be used to create time-synchronized recordings for acoustic localization. These recorders use an onboard GPS receiver to timestamp the beginning and end of each recording. However, these recordings are not synchronized until they are post-processed.
+Frontier Labs recorders with localization firmware can be used to create time-synchronized recordings. Each recorder has an onboard GPS receiver which enables it to precisely timestamp the beginning and end of each recording. However, these recordings are not actually synchronized until they are post-processed.
 
-This repository contains code for post-processing Frontier Labs recordings to synchronize them. It uses the timestamps saved in the filename of each recording to resample the recordings. It also uses the `loclog.txt` files saved by the recorders to account for "dropped buffers," i.e. the occasionally dropped audio data that sometimes happens when using time-synchronizing recorders. 
+This repository contains utilities for synchronizing Frontier Labs recordings as well as examples for how to use the utilities. This approach uses the start/end timestamps saved in each recorder filename as well as the `loclog.txt` files saved by the recorders. The `loclog.txt` files are used to account for "dropped buffers," i.e. the occasionally dropped audio data that sometimes happens when using time-synchronizing recorders. 
 
 ## How to use
 The files included in this repository are:
 * The utility library itself: [`frontierlabsutils.py`](frontierlabsutils.py)
-* Example recording resampling using the utilities: [`example_sync.py`](example_sync.py)
+* Example resampling script using the utilities: [`example_sync.py`](example_sync.py)
 * Example trimming of resampled recordings using the utilities: [`example_trim.py`](example_trim.py)
 
 I developed this library for my own application, so it isn't quite "plug and play." To use it, you will have to change at least the following things:
